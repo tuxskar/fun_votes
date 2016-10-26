@@ -16,6 +16,14 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from channels.routing import route
+
+from fun_votes.consumers import websocket_receive
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+]
+
+channel_routing = [
+    route("websocket.receive", websocket_receive, path=r"^/info/")
 ]
