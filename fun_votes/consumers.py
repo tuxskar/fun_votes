@@ -1,6 +1,6 @@
 import json
 
-from fun_votes.models import get_some_value
+from fun_votes.models import update_some_value, VOTES
 
 
 def websocket_receive(message):
@@ -10,4 +10,5 @@ def websocket_receive(message):
 
 
 def random_votes(message):
-    message.reply_channel.send(dict(text=json.dumps(get_some_value())))
+    update_some_value()
+    message.reply_channel.send(dict(text=json.dumps(VOTES)))

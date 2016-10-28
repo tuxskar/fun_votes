@@ -7,7 +7,7 @@ VOTES = {'Peter': 0,
          'Salvadora': 0}
 
 
-def get_some_value():
+def update_some_value():
     """
     Add 1 to some random value in the dict VOTES
     :return: (key, amount) for the key updated
