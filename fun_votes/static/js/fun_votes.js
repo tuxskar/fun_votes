@@ -18,10 +18,36 @@ $(function () {
     initializeApp(socket)
   }
 
+  var valueKeys = [], chartData = [], chart = c3.generate({
+    bindto: '#chart',
+    data: {
+      rows: []
+    }
+  });
 
   function appendOrUpdateValue(values) {
     // Checks for the missed keys in values and add the new objects identified by key using
     // the value of values[key]
+    if (valueKeys.length == 0) {
+      for (var key in values)
+        valueKeys.push(key)
+      valueKeys.sort();
+      chartData.push(valueKeys);
+    }
+    var newValuesList = [];
+    valueKeys.forEach(function (key) {
+      newValuesList.push(values[key])
+    });
+    chartData.push(newValuesList);
+
+    if (chartData.length > 10 + 1 + 1) { // max values plus key values plus the extra
+      chartData = chartData.slice(2);
+      chartData.unshift(valueKeys);
+    }
+    chart.load({
+      rows: chartData
+    });
+
     var $li;
     for (var key in values) {
       if (values.hasOwnProperty(key)) {

@@ -13,5 +13,5 @@ def update_some_value():
     :return: (key, amount) for the key updated
     """
     key = random.choice(list(VOTES.keys()))
-    VOTES[key] += 1
+    VOTES[key] += random.choice(range(10))
     return {key: VOTES[key]}
