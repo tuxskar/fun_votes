@@ -40,7 +40,7 @@ $(function () {
     });
     chartData.push(newValuesList);
 
-    if (chartData.length > 10 + 1 + 1) { // max values plus key values plus the extra
+    if (chartData.length > 15 + 1 + 1) { // max values plus key values plus the extra
       chartData = chartData.slice(2);
       chartData.unshift(valueKeys);
     }
@@ -68,7 +68,7 @@ $(function () {
 
       setInterval(function () {
         socket.send("Give me updates");
-      }, 1000);
+      }, 200);
     });
   }
 
