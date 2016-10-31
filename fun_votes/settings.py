@@ -126,6 +126,6 @@ STATIC_URL = '/static/'
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "asgiref.inmemory.ChannelLayer",
-        "ROUTING": "fun_votes.urls.channel_routing",
+        "ROUTING": "fun_votes.routers.channel_routing",
     },
 }

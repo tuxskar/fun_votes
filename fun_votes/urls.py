@@ -13,19 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from channels.routing import route
 from django.conf.urls import url
 
 import fun_votes.views
-from fun_votes.consumers import random_votes
 
 urlpatterns = [
     url(r'^$', fun_votes.views.IndexView.as_view()),
     # url(r'^admin/', admin.site.urls),
     url(r'^votes-info/', fun_votes.views.VotesInfoView.as_view())
-]
-
-channel_routing = [
-    # route("websocket.receive", websocket_receive, path=r"^/info/")
-    route("websocket.receive", random_votes, path=r"^/info/")
 ]
